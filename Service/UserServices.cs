@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Data.Entities;
+using Data.Repo;
+using Dtos;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -27,6 +30,8 @@ namespace Service
             _userRepository.AddUser(user);
             return user;
         }
+
+        
         public List<UserDto> GetUsers()
         {
             var user = _userRepository.GetUsers(); // Llamada al repositorio
@@ -38,6 +43,11 @@ namespace Service
                 Id = w.Id,
 
             }).ToList();
+        }
+
+        List<UserDto> IUserServices.GetUsers()
+        {
+            throw new NotImplementedException();
         }
     }
     }
