@@ -1,0 +1,6 @@
+@WineAppliaction_Git_HostAddress = http://localhost:5228
+
+GET {{WineAppliaction_Git_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
