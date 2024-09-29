@@ -13,17 +13,39 @@ public class WineController : Controller
     }
 
     [HttpPost]
-    public IActionResult RegisterWine(WineDto wineDto)
+    public IActionResult RegisterWine([FromBody]WineDto wineDto)
     {
-        _service.CreateWine(wineDto);
-        return Ok("Vino registrado correctamente.");
+        try
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            _service.CreateWine(wineDto);
+            return Ok("Vino registrado correctamente.");
+        }
+        catch (Exception ex) 
+        {
+            return StatusCode(500, "Error al crear el vino: " + ex.Message);
+        }
+        
     }
 
     [HttpGet]
 
     public IActionResult GetWine(IWineService wine)
     {
-        return Ok(_service.GetAllWines());
+        try
+        {
+            return Ok(_service.GetAllWines());
+
+        }
+        catch(Exception ex) 
+        {
+            return StatusCode(500, "Error al obtener los vinos: " + ex.Message);
+        }
+        
     }
 
 
