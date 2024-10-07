@@ -9,15 +9,21 @@ namespace Data.Repo
 {
     public class UserRepository
     {
-        private readonly List<User> _users = new List<User>();
+        private readonly WineContext _context;
+        public UserRepository(WineContext context) 
+        { 
+            _context = context; 
+        }
 
-        public void AddUser(User user)
+        public int AddUser(User user)
         {
-            _users.Add(user);
+            _context.Users.Add(user);
+            _context.SaveChanges();
+            return user.Id;
         }
         public List<User> GetUsers() // Método para obtener todos los vinos
         {
-            return _users;
+            return _context.Users.ToList();
         }
     }
 }
