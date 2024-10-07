@@ -36,7 +36,7 @@ namespace Service
         {
             var user = _userRepository.GetUsers(); // Llamada al repositorio
 
-            // Mapear las entidades Wine a WineDto
+            
             return user.Select(w => new UserDto
             {
                 username = w.Username,
@@ -45,9 +45,6 @@ namespace Service
             }).ToList();
         }
 
-        List<UserDto> IUserServices.GetUsers()
-        {
-            throw new NotImplementedException();
-        }
+        
     }
     }
