@@ -15,8 +15,6 @@ public class WineController : Controller
     [HttpPost]
     public IActionResult RegisterWine([FromBody]WineDto wineDto)
     {
-        try
-        {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
@@ -24,11 +22,6 @@ public class WineController : Controller
 
             _service.CreateWine(wineDto);
             return Ok("Vino registrado correctamente.");
-        }
-        catch (Exception ex) 
-        {
-            return StatusCode(500, "Error al crear el vino: " + ex.Message);
-        }
         
     }
 
@@ -36,19 +29,9 @@ public class WineController : Controller
 
     public IActionResult GetWine(IWineService wine)
     {
-        try
-        {
+        
             return Ok(_service.GetAllWines());
 
-        }
-        catch(Exception ex) 
-        {
-            return StatusCode(500, "Error al obtener los vinos: " + ex.Message);
-        }
-        
     }
-
-
-
 
 }
