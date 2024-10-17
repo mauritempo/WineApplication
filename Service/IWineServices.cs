@@ -11,7 +11,9 @@ namespace Service
 {
     public interface IWineService
     {
-        void CreateWine(WineDto wineDto);
+        Wine CreateWine(WineDto wineDto);
         List<WineDto> GetAllWines();
+        Wine UpdateWineStock(int id, int newStock);
+        List<Wine> GetWinesByVariety(string variety);
     }
 }
