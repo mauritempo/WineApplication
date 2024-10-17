@@ -35,13 +35,22 @@ namespace Data.Repo
         }
 
 
-        // Método para añadir stock a un vino específico
-        public void AddStock(int amount)
+        // Método para añadir Stock a un vino específico
+        public void ChangeStock(int amount)
         {
             if (amount <= 0) throw new ArgumentException("La cantidad a añadir debe ser mayor a 0");
             //Stock += amount;
         }
-
+        public void Update(Wine wine)
+        {
+            _context.Wines.Update(wine);
+            _context.SaveChanges();
+        }
+        public Wine GetById(int id)
+        {
+            return _context.Wines.FirstOrDefault(w => w.Id == id);
+        }
         
+
     }
 }

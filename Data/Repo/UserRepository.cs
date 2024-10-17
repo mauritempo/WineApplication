@@ -25,5 +25,9 @@ namespace Data.Repo
         {
             return _context.Users.ToList();
         }
+        public User? Get(string Name)
+        {
+            return _context.Users.FirstOrDefault(u => u.Username == Name);
+        }
     }
 }
