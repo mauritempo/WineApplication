@@ -22,7 +22,7 @@ namespace Service
             // Crear un nuevo usuario
             var user = new User
             {
-                Id = userDto.Id,
+                
                 Username = userDto.username,
                 Password = userDto.password// En una aplicación real, cifrar la contraseña
             };
@@ -44,7 +44,13 @@ namespace Service
 
             }).ToList();
         }
+        public User? AuthenticateUser(string username, string password)
+        {
+            User? userToReturn = _userRepository.Get(username);
+            if (userToReturn is not null && userToReturn.Password == password)
+                return userToReturn;
+            return null;
+        }
 
-        
     }
     }

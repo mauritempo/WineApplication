@@ -13,6 +13,8 @@ namespace Service
     {
         User CreateUser(UserDto userDto);
         List<UserDto> GetUsers();
+        User? AuthenticateUser(string username, string password);
+
 
     }
 }
