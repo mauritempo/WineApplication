@@ -29,30 +29,7 @@ namespace Data.Entities
 
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
 
-        private int _stock;
-
-        public int Stock
-        {
-            get => _stock;
-            set
-            {
-                if (value < 0) throw new ArgumentException("El stock no puede ser negativo.");
-                _stock = value;
-            }
-        }
-        public void AddStock(int amount)
-        {
-            if (amount <= 0) throw new ArgumentException("La cantidad a añadir debe ser mayor a 0.");
-            Stock += amount;
-        }
-
-        // Método para reducir stock
-        public void RemoveStock(int amount)
-        {
-            if (amount <= 0) throw new ArgumentException("La cantidad a reducir debe ser mayor a 0.");
-            if (Stock - amount < 0) throw new InvalidOperationException("No hay suficiente stock disponible.");
-            Stock -= amount;
-        }
-
+        public int Stock {  get; set; }
+        
     }
 }
