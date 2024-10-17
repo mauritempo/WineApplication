@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Data.Entities;
+using Data.Entities.Catas;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -30,6 +32,11 @@ namespace Data.Entities
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
 
         public int Stock {  get; set; }
-        
+
+        public List<Cata> Catas { get; set; } = new List<Cata>();
+
     }
 }
+
+}
+

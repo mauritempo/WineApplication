@@ -24,11 +24,11 @@ namespace Data
         {
             base.OnModelCreating(modelBuilder);
 
-            
+            // Configurar la relación muchos a muchos
             modelBuilder.Entity<Cata>()
-                .HasMany(c => c.Vinos)
-                .WithMany(w => w.Catas)
-                .UsingEntity(j => j.ToTable("CataWines")); 
+            .HasMany(c => c.Vinos)
+            .WithMany(w => w.Catas)
+            .UsingEntity(j => j.ToTable("CataWines")); // Tabla de unión
         }
     }
 }
