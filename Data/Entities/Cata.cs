@@ -8,18 +8,20 @@ using System.Threading.Tasks;
 
 namespace Data.Entities
 {
-    public class User
+    public class Cata
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
-
-        // Nombre de usuario, requerido y único
-        public string Username { get; set; } = string.Empty;
-
-        // Contraseña, al menos 8 caracteres
-        public string Password { get; set; }
+            
+        public string Nombre { get; set; } = string.Empty;
+           
+        public DateTime Fecha { get; set; }
+           
+        public List<Wine> Vinos { get; set; } = new List<Wine>();
+           
+        public List<string> Invitados { get; set; } = new List<string>();
         
-        
+
     }
 }
