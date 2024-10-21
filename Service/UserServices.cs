@@ -17,14 +17,14 @@ namespace Service
         {
             _userRepository = userRepository;
         }
-        public User CreateUser(UserDto userDto)
+        public User CreateUser(UserGlobalDTO userDto)
         {
             // Crear un nuevo usuario
             var user = new User
             {
                 
-                Username = userDto.username,
-                Password = userDto.password// En una aplicación real, cifrar la contraseña
+                Username = userDto.Username,
+                Password = userDto.Password// En una aplicación real, cifrar la contraseña
             };
 
             _userRepository.AddUser(user);

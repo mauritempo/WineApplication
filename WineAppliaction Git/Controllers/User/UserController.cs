@@ -14,10 +14,10 @@ namespace WineAppliaction_Git.Controllers.User
             _service = service;
         }
         [HttpPost]
-        public IActionResult CreateUser(UserDto userDto)
+        public IActionResult CreateUser(UserGlobalDTO AuserDto)
 
         {
-            _service.CreateUser(userDto);
+            _service.CreateUser(AuserDto);
             return Ok("user registrado correctamente.");
         }
         [HttpGet]

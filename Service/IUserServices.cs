@@ -11,7 +11,7 @@ namespace Service
 {
     public interface IUserServices
     {
-        User CreateUser(UserDto userDto);
+        User CreateUser(UserGlobalDTO userDto);
         List<UserDto> GetUsers();
         User? AuthenticateUser(string username, string password);
 
