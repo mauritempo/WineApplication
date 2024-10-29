@@ -1,4 +1,5 @@
 ﻿using Data.Entities;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,7 +32,10 @@ namespace Data.Repo
 
         public List<Wine> GetWines() // Método para obtener todos los vinos
         {
-            return _context.Wines.ToList();
+            return _context.Wines.Include(w => w.User).ThenInclude(w => w.incluir).ToList();
+            //usar includeTHeninclude traer parametros sin dto 
+            return _context.Wines.Include(w => w.User).Include(W=> W.Catas).ToList();
+            //INCLUDE DATOS DE MASM8
         }
 
 

@@ -35,6 +35,8 @@ namespace Data.Entities
 
         public List<Cata> Catas { get; set; } = new List<Cata>();
 
+        public User User { get; set; } //esta es una prueba
+
     }
 }
 

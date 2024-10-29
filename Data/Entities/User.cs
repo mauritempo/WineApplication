@@ -19,5 +19,7 @@ namespace Data.Entities
 
         // Contraseña, al menos 8 caracteres
         public string Password { get; set; }
+
+        public pruebaInclude incluir { get; set; } //esta es una prueba
     }
 }
