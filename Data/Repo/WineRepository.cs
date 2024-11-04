@@ -54,7 +54,43 @@ namespace Data.Repo
         {
             return _context.Wines.FirstOrDefault(w => w.Id == id);
         }
-        
+
+        public IEnumerable<Wine> GetWinesByVarietyAndYear(string variety, int year)
+        {
+            // La consulta LINQ para obtener los vinos según la variedad y año de cosecha
+            return _context.Wines.Where(wine => wine.Variety == variety && wine.Year == year)
+                .Take(5) // Tomar solo los primeros 5 elementos
+                .ToList();
+
+
+        }
+
+        public IEnumerable<Wine> GetWinesByStockAndRegion(string region)
+        {
+            return _context.Wines.Where(wine => wine.Stock > 10 && wine.Region == region)
+                .ToList();
+
+        }
+        public IEnumerable<dynamic> GetWineNamesByRegionWithStockGreaterThan10(string region)
+        {
+            return _context.Wines.Where(wine => wine.Stock > 10 && wine.Region == region)
+                .Select(wine => new { wine.Name, wine.Stock })  // Solo proyectamos `Name` y `Stock`
+                .ToList();
+
+        }
+        public IEnumerable<dynamic> GetTop5WinesByVarietyAndYear(string variety, int year)
+        {
+            return _context.Wines.Where(wine => wine.Variety == variety && wine.Year == year)
+                .OrderBy(wine => wine.Name) // Por ejemplo, ordenar por `Name`
+                .Take(5)
+                .Select(wine => new { wine.Name, wine.Year, wine.Variety, wine.Stock })
+                .ToList();
+
+        }
+
+
+
+
 
     }
 }
